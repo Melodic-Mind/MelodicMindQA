@@ -1,0 +1,4 @@
+12:16:03.024 [Test worker] INFO  tests.TestBase - Start test --> LoginPositiveTest
+12:16:03.051 [Test worker] INFO  tests.TestBase - Test result --> FAILED
+12:16:03.051 [Test worker] INFO  tests.TestBase - Stop test ---> LoginPositiveTest
+12:16:03.052 [Test worker] INFO  tests.TestBase - =========================================================================
