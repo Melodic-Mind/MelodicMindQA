@@ -8,5 +8,6 @@ public class LoginTests extends TestBase {
     @Test
     public void LoginPositiveTest(){
         System.out.println("Run first test ======================================");
+        System.out.println("test passed************");
     }
 }
