@@ -30,5 +30,22 @@ public class DataProviderForLogin {
         return list.iterator();
     }
 
+    @DataProvider
+    public Iterator<Object[]> DpFile_LoginNegativeTest_WrongPassword() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new FileReader(new File(
+                "src/test/resources/dataForLogin/data_LoginNegativeTest_WrongPassword.csv")));
+        String line = reader.readLine();
+        while (line!=null){
+            String split[] = line.split(",");
+            list.add(new Object[]{UserModel.builder()
+                    .email(split[0])
+                    .password(split[1])
+                    .build()});
+            line = reader.readLine();
+        }
+        return list.iterator();
+    }
+
 
 }
