@@ -29,7 +29,7 @@ public class TestBase {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.get("https://melodic-mind.com/");
+        driver.get("https://la-vocal-staging.web.app/");
     }
 
     @BeforeMethod(alwaysRun = true)
