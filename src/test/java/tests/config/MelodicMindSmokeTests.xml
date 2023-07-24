@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="SuiteRunMMSmoke" verbose="1">
+    <test name="nameRunMM">
+        <classes>
+            <class name="tests.melodic_mind_tests.HomePageSmokeTest"/>
+        </classes>
+    </test>
+
+</suite>
