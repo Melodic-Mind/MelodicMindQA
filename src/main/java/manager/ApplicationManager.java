@@ -1,13 +1,10 @@
 package manager;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lavocal_pages.*;
 import melodic_mind_pages.MmHomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import lavocal_pages.LvExercisesPage;
-import lavocal_pages.LvHomePage;
-import lavocal_pages.LvMainPage;
-import lavocal_pages.LvSignInPage;
 
 import java.time.Duration;
 
@@ -18,25 +15,25 @@ public class ApplicationManager {
     LvMainPage lvMainPage;
     LvExercisesPage lvExercisesPage;
     MmHomePage mmHomePage;
+    SignInUpPage signInUpPage;
 
     public void start() {
-        WebDriverManager.chromedriver().setup();
+//        WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-//        webDriver.navigate().to("https://la-vocal.melodic-mind.com/");
         webDriver.navigate().to("https://melodic-mind.com/");
-//        webDriver.navigate().to("https://la-vocal-staging.web.app/home");
 
         lvHomePage = new LvHomePage(webDriver);
         lvSignInPage = new LvSignInPage(webDriver);
         lvMainPage = new LvMainPage(webDriver);
         lvExercisesPage = new LvExercisesPage(webDriver);
         mmHomePage = new MmHomePage(webDriver);
+        signInUpPage = new SignInUpPage(webDriver);
     }
 
     public void stop() {
-        webDriver.close();
+        webDriver.quit();
     }
 
     public LvHomePage lvHomePage() {
@@ -57,5 +54,9 @@ public class ApplicationManager {
 
     public MmHomePage mmHomePage() {
         return mmHomePage;
+    }
+
+    public SignInUpPage signInUpPage() {
+        return signInUpPage;
     }
 }

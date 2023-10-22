@@ -1,6 +1,5 @@
 package tests.melodic_mind_tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import tests.BaseTests;
 
@@ -8,10 +7,11 @@ public class HomePageSmokeTest extends BaseTests {
 
     @Test
     public void checkMostImportantElements() {
+        app.mmHomePage().isHeaderElementsAppeared();
         app.mmHomePage().isLaVocalOpenButtonAppeared();
-        app.mmHomePage().musicGuruOpenButtonAppeared();
-        app.mmHomePage().songWriterStudioLearnMoreButtonAppeared();
-        app.mmHomePage().earWizardLearnMoreButtonAppeared();
+        app.mmHomePage().isMusicGuruOpenButtonAppeared();
+        app.mmHomePage().isSongWriterStudioLearnMoreButtonAppeared();
+        app.mmHomePage().isEarWizardLearnMoreButtonAppeared();
         app.mmHomePage().isSubscribeButtonAppeared();
         app.mmHomePage().isDiscordButtonAppeared();
         app.mmHomePage().isTikTokButtonButtonAppeared();

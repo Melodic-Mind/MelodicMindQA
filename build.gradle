@@ -27,13 +27,20 @@ dependencies {
 test {
     useTestNG()
 }
+
+
 task la_vocal(type: Test) {
     useTestNG() {
         suites('src/test/java/tests/config/LaVocalTests.xml')
     }
 }
-task melodic_mind(type: Test) {
+task melodic_mind_smoke(type: Test) {
     useTestNG() {
         suites('src/test/java/tests/config/MelodicMindSmokeTests.xml')
+    }
+}
+task la_vocal_smoke(type: Test) {
+    useTestNG() {
+        suites('src/test/java/tests/config/LaVocalSmokeTests.xml')
     }
 }

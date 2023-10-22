@@ -4,6 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class BaseHelper {
     public WebDriver webDriver;
@@ -14,6 +18,7 @@ public class BaseHelper {
     }
 
     public void type(WebElement webElement, String text) {
+        waitUntilClickable(webElement);
         webElement.click();
         webElement.clear();
         if (text != null) {
@@ -24,14 +29,24 @@ public class BaseHelper {
 
     public void scrollTo(WebElement webElement) {
         new Actions(webDriver).scrollToElement(webElement).perform();
+        pause(250);
+    }
+
+    public void pause(int time) {
         try {
-            Thread.sleep(250);
+            Thread.sleep(time);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public boolean isElementDisplayed(WebElement webElement) {
-        return webElement.isDisplayed();
+    public void waitUntilClickable(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    public void waitUntilVisible(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(webElement));
     }
 }

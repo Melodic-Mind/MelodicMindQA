@@ -3,6 +3,7 @@
 <suite name="SuiteRunLaVocal" verbose="1">
     <test name="nameRunLaVocal">
         <classes>
+            <class name="tests.la_vocal_tests.LoginTest"/>
             <class name="tests.la_vocal_tests.AddNewExerciseTests"/>
         </classes>
     </test>

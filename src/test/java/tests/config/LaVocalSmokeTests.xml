@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="SuiteRunLaVocalSmokeTests" verbose="1">
+    <test name="nameRunLaVocalSmokeTests">
+        <classes>
+            <class name="tests.la_vocal_tests.SmokeTests"/>
+        </classes>
+    </test>
+
+</suite>

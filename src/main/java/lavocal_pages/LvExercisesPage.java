@@ -32,16 +32,19 @@ public class LvExercisesPage extends BaseHelper {
     WebElement addNotesButton;
     @FindBy(xpath = "//div[@class='app-btn__content' and text()=' Type manually ']")
     WebElement typeManualyButton;
-//    @FindBy(xpath = "//div[@class='white']//*[@class='white']")
-    @FindBy(xpath = "(//div[@class='white'])[4]")
-    WebElement keys;
+    @FindBy(xpath = "(//div[@class='white'])[6]")
+    WebElement keyF;
+    @FindBy(xpath = "(//div[@class='white'])[8]")
+    WebElement keyA;
+    @FindBy(xpath = "(//div[@class='white'])[11]")
+    WebElement keyC;
     @FindBy(xpath = "(//div[@class='app-btn__content' and text()=' Save '])[2]")
     WebElement saveIntervalButton;
     @FindBy(xpath = "//div[text()=' Save ']")
     WebElement saveExerciseButton;
     @FindBy(xpath = "//div[@class='app-btn__content' and text()=' See all']")
     WebElement seeAllButton;
-    @FindBy(xpath = "//i[@class='q-icon text-white notranslate material-icons' and text()='more_vert']")
+    @FindBy(xpath = "(//button[@tabindex='0' and @type='button'])[4]")
     WebElement exerciseMenu;
     @FindBy(xpath = "//div[@class='q-item__section column q-item__section--main justify-center' and text()='Delete']")
     WebElement deleteMenuButton;
@@ -49,12 +52,9 @@ public class LvExercisesPage extends BaseHelper {
     WebElement confirmDeleteButton;
 
     public void clickNewExerciseButton() {
+        waitUntilClickable(newExerciseButton);
         newExerciseButton.click();
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntilVisible(exerciseName);
     }
 
     public void fillExerciseName(String text) {
@@ -83,11 +83,7 @@ public class LvExercisesPage extends BaseHelper {
 
     public void clickAddNotesButton() {
         addNotesButton.click();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        waitUntilClickable(keyF);
     }
 
     public void clickTypeManualyButton() {
@@ -97,8 +93,12 @@ public class LvExercisesPage extends BaseHelper {
     public void typeIntervals(String s) {
     }
 
-    public void clickOnKey() {
-        keys.click();
+    public void clickOnKeys() {
+        keyF.click();
+        pause(500);
+        keyA.click();
+        pause(500);
+        keyC.click();
     }
 
     public void clickOnSaveButton() {
@@ -106,23 +106,14 @@ public class LvExercisesPage extends BaseHelper {
     }
 
     public void clickSaveExerciseButton() {
+        waitUntilClickable(saveExerciseButton);
         saveExerciseButton.click();
     }
 
 
     public boolean isExerciseSaved(String name) {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause(5000);
         List<WebElement> list = webDriver.findElements(By.xpath("//h6"));
-        if (list.size() >= 6) {
-//            if (seeAllButton.isDisplayed())
-//                seeAllButton.click();
-            list = webDriver.findElements(By.xpath("//h6"));
-        }
-        System.out.println(list.size());
         for (WebElement x : list) {
             if (x.getText().equals(name)) {
                 System.out.println(x.getText());
@@ -130,8 +121,6 @@ public class LvExercisesPage extends BaseHelper {
             }
         }
         return false;
-
-
     }
 
     public void maxNumberOfItems(int maxNumberOfItems) {
@@ -147,12 +136,9 @@ public class LvExercisesPage extends BaseHelper {
     public void deleteExercise() {
         exerciseMenu.click();
         deleteMenuButton.click();
+        waitUntilClickable(confirmDeleteButton);
         confirmDeleteButton.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        pause(2000);
     }
 }
 

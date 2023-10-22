@@ -37,6 +37,7 @@ public class MmHomePage extends BaseHelper {
     WebElement instagramButton;
     @FindBy(xpath = "//span[@class='col text-left' and text()='E-Mail']")
     WebElement eMailButton;
+    //Footer
     @FindBy(xpath = "//button[text()=' Terms of Use ']")
     WebElement termOfUseLink;
     @FindBy(xpath = "//button[text()=' Privacy Policy ']")
@@ -47,11 +48,34 @@ public class MmHomePage extends BaseHelper {
     WebElement contactUsLink;
     @FindBy(xpath = "//div[@class='text-center text-grey-5' and text()=' All rights reserved @ Melodic Mind 2023']")
     WebElement allRightsReservedFooter;
+    //Header
+    @FindBy(xpath = "//span[text()=' Melodic Mind ']")
+    WebElement melodicMindLogoButton;
+    @FindBy(xpath = "//span[text()='Home']")
+    WebElement homeHeaderButton;
+    @FindBy(xpath = "//span[text()='The Story']")
+    WebElement theStoryHeaderButton;
+    @FindBy(xpath = "//span[text()='Learn']")
+    WebElement learnHeaderButton;
+    @FindBy(xpath = "//span[text()='Blog']")
+    WebElement blogHeaderButton;
+    @FindBy(xpath = "//span[text()='Contact']")
+    WebElement contactHeaderButton;
+    @FindBy(xpath = "//span[text()='Q & A']")
+    WebElement QnAHeaderButton;
+    @FindBy(xpath = "//span[text()='Profile ']")
+    WebElement profileHeaderButton;
+    @FindBy(xpath = "//span[text()='Login ']")
+    WebElement loginHeaderButton;
+    @FindBy(xpath = "(//span[@class='q-focus-helper'])[8]") // TODO: 06/08/2023 Locators???
+    WebElement settingsHeaderButton;
 
-    public void openLaVocalApp() throws InterruptedException {
+
+    public void openLaVocalApp() {
         scrollTo(laVocalOpenButton);
+        pause(3000);
+        waitUntilClickable(laVocalOpenButton);
         laVocalOpenButton.click();
-        Thread.sleep(5000);
         Set<String> windowHandles = webDriver.getWindowHandles();
         for (String windowHandle : windowHandles) {
             webDriver.switchTo().window(windowHandle);
@@ -63,17 +87,17 @@ public class MmHomePage extends BaseHelper {
         Assert.assertTrue(laVocalOpenButton.isDisplayed());
     }
 
-    public void musicGuruOpenButtonAppeared() {
+    public void isMusicGuruOpenButtonAppeared() {
         scrollTo(musicGuruOpenButton);
         Assert.assertTrue(musicGuruOpenButton.isDisplayed());
     }
 
-    public void songWriterStudioLearnMoreButtonAppeared() {
+    public void isSongWriterStudioLearnMoreButtonAppeared() {
         scrollTo(songWriterStudioLearnMoreButton);
         Assert.assertTrue(songWriterStudioLearnMoreButton.isDisplayed());
     }
 
-    public void earWizardLearnMoreButtonAppeared() {
+    public void isEarWizardLearnMoreButtonAppeared() {
         scrollTo(earWizardLearnMoreButton);
         Assert.assertTrue(earWizardLearnMoreButton.isDisplayed());
     }
@@ -118,6 +142,17 @@ public class MmHomePage extends BaseHelper {
         Assert.assertTrue(eMailButton.isDisplayed());
     }
 
+    public void isHeaderElementsAppeared() {
+        Assert.assertTrue(melodicMindLogoButton.isDisplayed());
+        Assert.assertTrue(homeHeaderButton.isDisplayed());
+        Assert.assertTrue(theStoryHeaderButton.isDisplayed());
+        Assert.assertTrue(learnHeaderButton.isDisplayed());
+        Assert.assertTrue(blogHeaderButton.isDisplayed());
+        Assert.assertTrue(QnAHeaderButton.isDisplayed());
+        Assert.assertTrue(loginHeaderButton.isDisplayed() || profileHeaderButton.isDisplayed());
+//        Assert.assertTrue(settingsHeaderButton.isDisplayed());
+    }
+
     public void isFooterElementsAppeared() {
         scrollTo(allRightsReservedFooter);
         Assert.assertTrue(allRightsReservedFooter.isDisplayed());
@@ -126,6 +161,4 @@ public class MmHomePage extends BaseHelper {
         Assert.assertTrue(theStoryLink.isDisplayed());
         Assert.assertTrue(contactUsLink.isDisplayed());
     }
-
-
 }

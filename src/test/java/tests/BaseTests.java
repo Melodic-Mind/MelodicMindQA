@@ -14,6 +14,6 @@ public class BaseTests {
     }
     @AfterSuite
     public void tearDown() {
-//        app.stop();
+        app.stop();
     }
 }
